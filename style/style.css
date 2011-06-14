@@ -49,36 +49,38 @@ table {
 
 
 html { color: white; background: black; }
-body { color: #ccc; line-height: 1.25; font-size: 14px; font-family: "proxima-nova-1", sans-serif; font-weight: 300; }
+body { color: #bbb; line-height: 1.25; font-size: 14px; font-family: "proxima-nova-1", sans-serif; font-weight: 300; }
 a { color: #f93; text-decoration: none; }
 h2, h3 { font-size: 24px; font-weight: 300; margin: 0 0 20px 0; }
 p { margin: 1em 0 0 0; }
 strong { font-weigth: 600; }
-section { float: left; border-top: 6px solid rgba(204, 204, 204, 0.2); padding: 30px 0;  }
+section { float: left; border-top: 6px solid rgba(204, 204, 204, 0.25); padding: 30px 0;  }
 
+header		{ position: relative; }
+	header h1 { background: url(images/ani.png) 842px 122px no-repeat; }
+	header h1 a { overflow: hidden; text-indent: -1000px; display: block; width: 320px; height: 310px; background: url(images/logo.png) 2px 2px no-repeat; }
+	header h1 small span { display: none }
+	header h1 small { display: block; position: absolute; top: 147px; left: 380px; width: 236px; height: 34px; background: url(images/d_e.png) 0 0 no-repeat; text-indent: -1000px; overflow: hidden; }
 #bg { position:fixed; top:-50%; left:-50%; width:200%; height:200%; }
 	#bg img {
      position:absolute; margin:auto;
      top:0; left:0; right:0; bottom:0;
      min-width:50%; min-height:50% }
 #wrap 		{ overflow: hidden; width: 958px; margin: 0 auto; position: relative; padding: 0 0 100px 0; }
-header		{ position: relative; }
-	header h1 a { overflow: hidden; text-indent: -1000px; display: block; width: 320px; height: 320px; background: url(images/logo.png) center center no-repeat; }
-	header h1 small span { display: none }
-	header h1 small { display: block; position: absolute; left: 380px; top: 50%; }
-#about    { width: 320px; float: left; margin: 0 58px 0 0; border-top: 10px solid rgba(204, 204, 204, 0.2); padding: 17px 0 0 0;	}
+#about    { width: 320px; float: left; margin: 0 58px 0 0; border-top: 10px solid rgba(204, 204, 204, 0.25); padding: 17px 0 0 0;	}
 	#about h2 { margin: 0; padding:0; font-size: 60px; font-weight: 300; }
-	#about .addresses { overflow: hidden; margin-top: 30px; border-top: 6px solid rgba(204, 204, 204, 0.2); }
+	#about .addresses { overflow: hidden; margin-top: 30px; border-top: 6px solid rgba(204, 204, 204, 0.25); }
 		#about .addresses div { width: 160px; float: left; }
-	#about .people { overflow: hidden }
+	#about .people { overflow: hidden; width: 100% }
 		#about .people img { display: block; }
 		#about .people p { float: left; width: 160px }
 #projects { width: 270px; margin: 0 40px 0 0; }
-	#projects img { display: block; margin-bottom: 8px; }
+	#projects a { font-weight: 600; }
+	#projects img { display: block; margin-bottom: 8px; width: 100% }
 #tweets { width: 270px; margin: 0; }
 	#tweets p { padding-left: 60px; position: relative; }
 		#tweets p img { position: absolute; left: 0; top: 0; }
 		#tweets p a { font-weight: 600; } 
 		#tweets p .byline { font-size: 11px; display: block; margin-bottom: 4px; } 
 		#tweets p .byline a { font-weight: 600; font-size: 14px; color: #ccc; } 
-		#tweets p .date { font-size: 11px; display: block; margin-top: 4px; } 
+		#tweets p .date { background: url(images/bird_16_gray.png) center left no-repeat; padding-left: 22px; font-size: 11px; display: block; margin-top: 4px; } 
