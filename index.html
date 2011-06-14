@@ -66,10 +66,28 @@
 		</div>
 		<script>
 			(function($){
-				var feedsApiUrl = "https://ajax.googleapis.com/ajax/services/feed/load"
-				var feedUrl = "http://miosagency.posterous.com/rss.xml"
-				var statusesUrl = "http://api.twitter.com/1/lists/statuses.json?list_id=47584945";
+				// Fix emails
+				$("a[data-email]").each(function(i,e){
+					e = $(e); e.attr("href","mailto:"+unescape(e.attr("data-email"))).text(unescape(e.attr("data-email")))
+				})
+				// Load blog feed
 				function skipNoise(e){ return !e.source.match(/foursquare\.com/) }
+				var feedUrl = "http://miosagency.posterous.com/rss.xml"
+				var feedsApiUrl = "https://ajax.googleapis.com/ajax/services/feed/load"
+				$.getJSON(feedsApiUrl+"?v=1.0&q="+feedUrl+"&callback=?",function(d){
+					if(d.responseStatus!=200) return;
+					var list = $("#projects div").empty();
+					$.each(d.responseData.feed.entries.slice(0,10),function(ix,item){
+						var e = $('<p>')
+							.append('<a href="'+item.link+'">'+item.title+'</a><br>')
+							.append(item.contentSnippet);
+						if(item.mediaGroups) {
+							e.prepend($('<img src="'+item.mediaGroups[0].contents[0].thumbnails[0].url+'">'));
+						}
+						list.append(e);
+					})
+				})
+				// Load tweets
 				function markup(t) { 
 					return t.replace(/https?:\/\/[^\s]+/g,function(e){
 						return '<a rel="nofollow" class="url" href="'+e+'">'+e.replace(/https?:\/\//g,'')+'</a>';
@@ -79,30 +97,12 @@
 						return '<a rel="nofollow" href="http://twitter.com/search?q='+escape(e)+'">'+e+'</a>';
 					});
 				}
-				// Fix emails
-				$("a[data-email]").each(function(i,e){
-					e = $(e); e.attr("href","mailto:"+unescape(e.attr("data-email"))).text(unescape(e.attr("data-email")))
-				})
-				// Load blog feed
-				$.getJSON(feedsApiUrl+"?v=1.0&q="+feedUrl+"&callback=?",function(d){
-					if(d.responseStatus!=200) return;
-					var list = $("#projects div").empty();
-					$.each(d.responseData.feed.entries.slice(0,10),function(ix,item){
-						var e = $('<p>')
-							.append('<a href="'+item.link+'">'+item.title+'</a><br>')
-							.append($('<span>').text(item.contentSnippet));
-						if(item.mediaGroups) {
-							e.prepend($('<img src="'+item.mediaGroups[0].contents[0].thumbnails[0].url+'">'));
-						}
-						list.append(e);
-					})
-				})
-				// Load tweets
-				$.getJSON(statusesUrl+"&callback=?",function(d){
+				var tweetsUrl = "http://api.twitter.com/1/lists/statuses.json?list_id=47584945";
+				$.getJSON(tweetsUrl+"&callback=?",function(d){
 					var list = $("#tweets div").empty()
 					$.each(d.filter(skipNoise).slice(0,10),function(ix,item){
 						list.append(
-							'<p><img src="'+item.user.profile_image_url+'" alt="'+item.user.name+'">'+
+							'<p><img src="'+item.user.profile_image_url+'" alt="'+item.user.name+'" />'+
 							'<span class="byline">'+
 								'<a href="http://twitter.com/'+item.user.screen_name+'">'+item.user.screen_name+'</a> '+
 								item.user.name+
