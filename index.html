@@ -3,9 +3,9 @@
 	<head>
 		<script src="script/jquery-1.6.1.min.js"></script>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-		<script type="text/javascript" src="http://use.typekit.com/yya0oav.js"></script>
+<!--		<script type="text/javascript" src="http://use.typekit.com/yya0oav.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-		<link rel="stylesheet" href="style/style.css" type="text/css" />
+-->		<link rel="stylesheet" href="style/style.css" type="text/css" />
 		<script src="script/site.js"></script>
 	</head>
 	<body itemscope itemtype="http://schema.org/Organization">
@@ -78,11 +78,11 @@
 					if(d.responseStatus!=200) return;
 					var list = $("#projects div").empty();
 					$.each(d.responseData.feed.entries.slice(0,10),function(ix,item){
-						var e = $('<p>')
-							.append('<a href="'+item.link+'">'+item.title+'</a><br>')
-							.append(item.contentSnippet);
+						var e = $('<div>')
+							.append('<h4><a href="'+item.link+'">'+item.title+'</a></h4>')
+							.append('<p>'+item.contentSnippet+'</p>');
 						if(item.mediaGroups) {
-							e.prepend($('<img src="'+item.mediaGroups[0].contents[0].thumbnails[0].url+'">'));
+							e.prepend($('<a href="'+item.link+'"><img src="'+item.mediaGroups[0].contents[0].thumbnails[0].url+'"></a>'));
 						}
 						list.append(e);
 					})

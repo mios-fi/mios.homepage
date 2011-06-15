@@ -51,10 +51,11 @@ table {
 html { color: white; background: black; }
 body { color: #bbb; line-height: 1.25; font-size: 14px; font-family: "proxima-nova-1", sans-serif; font-weight: 300; }
 a { color: #f93; text-decoration: none; }
-h2, h3 { font-size: 24px; font-weight: 300; margin: 0 0 20px 0; }
+	a:hover { color: #F60; }
+h2, h3 { font-size: 24px; font-weight: 300; margin: 0 0 20px 0; letter-spacing: -1px }
 p { margin: 1em 0 0 0; }
 strong { font-weigth: 600; }
-section { float: left; border-top: 6px solid rgba(204, 204, 204, 0.25); padding: 30px 0;  }
+section { float: left; border-top: 6px solid  rgb(60,60,60); border-color: rgba(204, 204, 204, 0.25); padding: 30px 0;  }
 
 header		{ position: relative; }
 	header h1 { background: url(images/ani.png) 842px 122px no-repeat; }
@@ -67,18 +68,22 @@ header		{ position: relative; }
      top:0; left:0; right:0; bottom:0;
      min-width:50%; min-height:50% }
 #wrap 		{ overflow: hidden; width: 958px; margin: 0 auto; position: relative; padding: 0 0 100px 0; }
-#about    { width: 320px; float: left; margin: 0 58px 0 0; border-top: 10px solid rgba(204, 204, 204, 0.25); padding: 17px 0 0 0;	}
-	#about h2 { margin: 0; padding:0; font-size: 60px; font-weight: 300; }
-	#about .addresses { overflow: hidden; margin-top: 30px; border-top: 6px solid rgba(204, 204, 204, 0.25); }
+#about    { width: 320px; float: left; margin: 0 58px 0 0; border-top: 10px solid rgb(60,60,60); border-color: rgba(204, 204, 204, 0.25); padding: 17px 0 0 0;	}
+	#about h2 { margin: 0; padding:0; font-size: 60px; font-weight: 300; letter-spacing: -3px }
+	#about .addresses { overflow: hidden; margin-top: 30px; border-top: 6px solid rgb(60,60,60); border-color: rgba(204, 204, 204, 0.25); }
 		#about .addresses div { width: 160px; float: left; }
+		#about .addresses div h3 { margin-bottom: 10px }
 	#about .people { overflow: hidden; width: 100% }
 		#about .people img { display: block; }
 		#about .people p { float: left; width: 160px }
+
 #projects { width: 270px; margin: 0 40px 0 0; }
-	#projects a { font-weight: 600; }
-	#projects img { display: block; margin-bottom: 8px; width: 100% }
+	#projects img { display: block; margin-bottom: 10px; width: 100% }
+	#projects h4 { font-weight: 300; font-size: 19px; line-height: 20px; margin-bottom: 4px; }
+	#projects p { margin: 5px 0 25px 0; }
+
 #tweets { width: 270px; margin: 0; }
-	#tweets p { padding-left: 60px; position: relative; }
+	#tweets p { padding-left: 60px; position: relative; margin: 20px 0 0 0; }
 		#tweets p img { position: absolute; left: 0; top: 0; }
 		#tweets p a { font-weight: 600; } 
 		#tweets p .byline { font-size: 11px; display: block; margin-bottom: 4px; } 
